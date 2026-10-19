@@ -1,0 +1,42 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "plugins": ["eslint", "typescript"],
+  "jsPlugins": [
+    {
+      "name": "stylistic",
+      "specifier": "@stylistic/eslint-plugin"
+    }
+  ],
+  "rules": {
+    "curly": ["error", "all"],
+    "no-console": "warn",
+    "eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "arrow-body-style": ["error", "as-needed"],
+    "object-shorthand": ["error", "always"],
+    "typescript/no-floating-promises": "error",
+    "typescript/no-misused-promises": "error",
+    "typescript/no-explicit-any": "error",
+    "typescript/consistent-type-assertions": [
+      "error",
+      { "assertionStyle": "never" }
+    ],
+    "typescript/no-non-null-assertion": "error",
+    "stylistic/semi": ["error", "never"]
+  },
+  "ignorePatterns": [
+    "node_modules",
+    ".obsidian",
+    "dist",
+    "build",
+    ".next",
+    "vendor",
+    "**/fixtures/**",
+    "**/*.bundle.js",
+    "**/coverage",
+    "**/.turbo"
+  ]
+}
