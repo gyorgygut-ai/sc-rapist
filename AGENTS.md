@@ -8,8 +8,8 @@
 
 **SPECS > Code**: Code matched to authoritive specs; NOT specs to code
 **Don't Force It**: Let TS infer; no need to force types. No `any`, `as`.
-**Don't Get Caught**: Always use `camofox browser` to drive discovery + scraping.
-**Be Future Proof**: Text labels change. Prefer lookup by a constant instead (e.g. "role").
+**Don't Get Caught**: Always use `camofox browser` to drive stealth discovery + scraping.
+**Idempotency**: Text labels change. Prefer lookup by a constant instead (e.g. "role").
 
 ---
 
@@ -24,7 +24,7 @@
 - **Acceptance**:
 
   - `npm`, `npx` accessible
-  - `ts`, `oxlint`, `zod` installed
+  - `typescript`, `oxlint`, `zod` installed
   - `npm install` succeeds without error
   - quick smoke proves `camofox` working
 
@@ -35,13 +35,13 @@
 - **Outcome**: Requirements ready to be mapped to a new folder
 - **Acceptance**:
 
-  - New `./targets/{new-name}/` exists
-  - New `./targets/{new-name}/schemas` exists
-  - New `./targets/{new-name}/jobs` exists
-  - New `./targets/{new-name}/results` exists
-  - New`./targets/{new-name}/AGENTS.md` exists
-  - New `AGENTS.md` describes url, goals, flows
-  - New `AGENTS.md` matches tone + style of this doc
+  - New `./jobs/{new-name}/` exists
+  - New `./jobs/{new-name}/schemas` exists
+  - New `./jobs/{new-name}/jobs` exists
+  - New `./jobs/{new-name}/results` exists
+  - New `./jobs/{new-name}/AGENTS.md` exists
+  - `./jobs/{new-name}/AGENTS.md` describes url, goals, flows
+  - `./jobs/{new-name}/AGENTS.md` matches tone + style of this doc
 
 **2. Discovery**:
 
@@ -50,8 +50,8 @@
 - **Outcome**: Target markup, forms and url structure mapped
 - **Acceptance**:
 
-  - `./targets/{target}/AGENTS.md` describes critical facts
-  - `./targets/{target}/schemas/*.schema.ts` one schema per data type
+  - `./jobs/{job-name}/AGENTS.md` describes critical rules for idempotent runs
+  - `./jobs/{job-name}/schemas/*.schema.ts` one schema file per data type
 
 **3. Scrape Jobs**:
 
@@ -60,10 +60,13 @@
 - **Outcome**: Job runs without error
 - **Acceptance**:
 
-  - 1. Created: `./targets/{target}/jobs/{job-name}.ts`
-  - 2. Job uses schemas for end-to-end type safety
-  - 3. Created: `tsx job:{job-name}`
-  - 4. Verification: `tsx job:{job-name}` executed
-  - 5. Exists: `./targets/{target}/results/{{unique-timestamp}-{job-name}}.yml`
-  - 6. Verification: `tsx job:{job-name}` executed again
-  - 7. Exists: `./targets/{target}/results/{{unique-timestamp}-{job-name}}.yml`
+  - 1. Created: `./jobs/{job-name}/smoke.ts`
+  - 1. Created: `./jobs/{job-name}/visit.ts`
+  - 3. Created: npm `job:{job-name}:smoke`, `tsx -> smoke.ts`
+  - 4. Created: npm `job:{job-name}:visit`, `tsx -> visit.ts`
+  - 5. Code uses schemas for end-to-end type safety
+  - 6. Verification: `tsx job:{job-name}:smoke` executed
+  - 7. Verification: `tsx job:{job-name}:visit` executed
+  - 8. Exists: `./jobs/{job-name}/results/{{unique-timestamp}-{job-name}}.yml`
+  - 9. Verification: `tsx job:{job-name}:visit` executed again
+  - 10. Exists: `./jobs/{job-name}/results/{{unique-timestamp}-{job-name}}.yml`
