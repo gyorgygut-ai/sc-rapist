@@ -62,8 +62,8 @@
 
   - 1. Created: `./targets/{target}/jobs/{job-name}.ts`
   - 2. Job uses schemas for end-to-end type safety
-  - 3. Created: `npm run job:{job-name}`
-  - 4. Verification: `npm run job:{job-name}` executed
+  - 3. Created: `tsx job:{job-name}`
+  - 4. Verification: `tsx job:{job-name}` executed
   - 5. Exists: `./targets/{target}/results/{{unique-timestamp}-{job-name}}.yml`
-  - 6. Verification: `npm run job:{job-name}` executed again
+  - 6. Verification: `tsx job:{job-name}` executed again
   - 7. Exists: `./targets/{target}/results/{{unique-timestamp}-{job-name}}.yml`
