@@ -65,8 +65,8 @@
   - 3. Created: npm `job:{job-name}:smoke`, `tsx -> smoke.ts`
   - 4. Created: npm `job:{job-name}:visit`, `tsx -> visit.ts`
   - 5. Code uses schemas for end-to-end type safety
-  - 6. Verification: `tsx job:{job-name}:smoke` executed
-  - 7. Verification: `tsx job:{job-name}:visit` executed
+  - 6. Verification: `npm run job:{job-name}:smoke` executed
+  - 7. Verification: `npm run job:{job-name}:visit` executed
   - 8. Exists: `./jobs/{job-name}/results/{{unique-timestamp}-{job-name}}.yml`
-  - 9. Verification: `tsx job:{job-name}:visit` executed again
+  - 9. Verification: `npm run job:{job-name}:visit` executed again
   - 10. Exists: `./jobs/{job-name}/results/{{unique-timestamp}-{job-name}}.yml`

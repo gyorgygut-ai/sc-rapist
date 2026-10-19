@@ -11,7 +11,9 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "camofox": "npx --yes @askjo/camofox-browser@1.18.1",
-    "smoke": "npx tsx scripts/smoke.ts"
+    "smoke": "npx tsx scripts/smoke.ts",
+    "job:444-top-talked-people:smoke": "tsx ./jobs/444-top-talked-people/smoke.ts",
+    "job:444-top-talked-people:visit": "tsx ./jobs/444-top-talked-people/visit.ts"
   },
   "dependencies": {
     "yaml": "^2.9.1",
